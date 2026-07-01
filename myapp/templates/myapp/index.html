@@ -26,7 +26,7 @@
     <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
             <a href="#home" class="logo" aria-label="Alex Morgan Home">
-                A<span>.</span>Morgan
+                {{ data.firstname|slice:":1" }}<span>.</span>{{ data.lastname }}
             </a>
 
             <ul class="nav-links" id="navLinks">
@@ -61,19 +61,17 @@
         </div>
     </nav>
 
-
+    
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
                 <p class="hero-greeting">Hello, I'm</p>
-                <h1 class="hero-name">Alex Morgan</h1>
+                <h1 class="hero-name">{{data.firstname}} {{data.lastname}}</h1>
                 <p class="hero-role">
                     <span id="typingText"></span><span class="cursor" aria-hidden="true"></span>
                 </p>
                 <p class="hero-description">
-                    I craft robust, scalable backend systems and RESTful APIs using Python and Django.
-                    With a focus on clean architecture, database efficiency, and seamless integrations,
-                    I transform complex requirements into elegant, production-ready web applications.
+                    {{data.description}}
                 </p>
                 <div class="hero-cta">
                     <a href="#projects" class="btn btn-primary">
@@ -219,14 +217,12 @@
             </div>
 
             <div class="skills-grid">
+                {% for s in skills %}
                 <div class="skill-card reveal">
                     <div class="skill-header">
-                        <h3 class="skill-name">Python</h3>
+                        <h3 class="skill-name">{{s.skill_name}}</h3>
                         <div class="skill-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.83l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.2l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05L0 11.97l.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-3.1H6.2l-.01-1.13-.05-.28-.12-.28-.2-.26-.31-.22-.42-.15-.53-.08-.63-.02H1.8l-.19.01-.36.05-.55.15-.55.25-.5.35-.46.46-.41.57-.35.71-.28.88-.21 1.05-.14 1.25L0 7.75v.15l.02.33.06.65.13.98.22 1.29.33 1.57.45 1.82.58 2.03.72 2.19.88 2.31 1.05 2.38 1.23 2.4 1.42 2.36 1.62 2.27 1.83 2.13 2.05 1.93 2.27 1.68 2.49 1.38 2.7 1.03 2.91.64 3.11.22 3.3-.21 3.48-.69 3.63-1.2 3.76-1.76 3.86-2.35 3.94-2.98 3.99-3.64 4-4.31 3.98-5.01 3.93-5.72 3.84-6.43 3.72-7.15 3.56-7.86 3.36-8.57 3.13-9.26 2.86-9.94 2.55-10.6 2.21-11.23 1.83-11.84 1.42-12.42 1-12.97.54-13.48.07-13.96-.42-14.39-.93-14.78-1.47-15.12-2.04-15.4-2.63-15.64-3.25-15.81-3.89-15.93-4.55-15.99-5.22-16-5.9-15.94-6.59-15.82-7.27-15.64-7.95-15.4-8.62-15.1-9.27-14.74-9.9-14.32-10.51-13.85-11.08-13.32-11.62-12.74-12.12-12.11-12.57-11.43-12.97-10.71-13.32-9.95-13.62-9.15-13.85-8.32-14.03-7.46-14.15-6.57-14.2-5.66-14.19-4.73-14.11-3.79-13.97-2.84-13.76-1.89-13.48-.94-13.14 0-12.74.94-12.28 1.89-11.75 2.84-11.17 3.79-10.53 4.73-9.84 5.66-9.1 6.57-8.32 7.46-7.5 8.32-6.65 9.15-5.77 9.95-4.87 10.71-3.95 11.43-3.02 12.11-2.08 12.74-1.14 13.32-.21 13.85.72 14.32 1.64 14.74 2.55 15.1 3.45 15.4 4.33 15.64 5.19 15.82 6.03 15.94 6.85 16 7.64 15.99 8.41 15.93 9.15 15.81 9.85 15.64 10.53 15.4 11.17 15.12 11.78 14.78 12.34 14.39 12.87 13.96 13.34 13.48 13.77 12.97 14.14 12.42 14.46 11.84 14.72 11.23 14.92 10.6 15.06 9.94 15.14 9.26 15.15 8.57 15.1 7.86 14.99 7.15 14.81 6.43 14.57 5.72 14.27 5.01 13.91 4.31 13.49 3.64 13.01 3 12.48 2.4 11.89 1.83 11.25 1.31 10.57.83 9.84.4 9.07.02 8.26-.29 7.42-.54 6.55-.72 5.65-.84 4.73-.89 3.79-.87 2.84-.79 1.88-.64.92-.43z" />
-                            </svg>
+                            <img src="{{ s.icon.url }}">
                         </div>
                     </div>
                     <div class="skill-level">
@@ -241,125 +237,7 @@
                     <p class="skill-description">Core language for backend logic, scripting, data processing, and
                         automation.</p>
                 </div>
-
-                <div class="skill-card reveal reveal-delay-1">
-                    <div class="skill-header">
-                        <h3 class="skill-name">Django</h3>
-                        <div class="skill-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M11.146 0h3.924v18.166c-2.013.382-3.491.535-5.096.535-4.791 0-7.288-2.166-7.288-6.32 0-3.983 2.612-6.6 6.753-6.6.637 0 1.121.05 1.707.203zm0 9.143a3.894 3.894 0 00-1.325-.204c-1.988 0-3.134 1.223-3.134 3.365 0 2.09 1.055 3.22 3.012 3.22.433 0 .785-.025 1.447-.102V9.142zM21.314 6.06v9.098c0 3.134-.229 4.638-.917 5.937-.637 1.249-1.478 2.039-3.211 2.905l-3.644-1.733c1.733-.815 2.574-1.53 3.109-2.625.561-1.121.739-2.421.739-5.835V6.059h3.924zM17.39.021h3.924v4.026H17.39z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="skill-level">
-                        <div class="skill-level-header">
-                            <span>Proficiency</span>
-                            <span>92%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="92"></div>
-                        </div>
-                    </div>
-                    <p class="skill-description">Full-stack and backend web development with Django's ORM, admin, and
-                        views.</p>
-                </div>
-
-                <div class="skill-card reveal reveal-delay-2">
-                    <div class="skill-header">
-                        <h3 class="skill-name">Django REST Framework</h3>
-                        <div class="skill-icon">
-                            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="skill-level">
-                        <div class="skill-level-header">
-                            <span>Proficiency</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="90"></div>
-                        </div>
-                    </div>
-                    <p class="skill-description">Building secure, versioned REST APIs with serializers, viewsets, and
-                        permissions.</p>
-                </div>
-
-                <div class="skill-card reveal reveal-delay-3">
-                    <div class="skill-header">
-                        <h3 class="skill-name">MySQL & SQLite</h3>
-                        <div class="skill-icon">
-                            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="skill-level">
-                        <div class="skill-level-header">
-                            <span>Proficiency</span>
-                            <span>88%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="88"></div>
-                        </div>
-                    </div>
-                    <p class="skill-description">Database design, query optimization, migrations, and relational
-                        modeling.</p>
-                </div>
-
-                <div class="skill-card reveal reveal-delay-4">
-                    <div class="skill-header">
-                        <h3 class="skill-name">Git & GitHub</h3>
-                        <div class="skill-icon">
-                            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="skill-level">
-                        <div class="skill-level-header">
-                            <span>Proficiency</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="85"></div>
-                        </div>
-                    </div>
-                    <p class="skill-description">Version control, branching strategies, pull requests, and collaborative
-                        workflows.</p>
-                </div>
-
-                <div class="skill-card reveal reveal-delay-1">
-                    <div class="skill-header">
-                        <h3 class="skill-name">HTML, CSS & JavaScript</h3>
-                        <div class="skill-icon">
-                            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="skill-level">
-                        <div class="skill-level-header">
-                            <span>Proficiency</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="80"></div>
-                        </div>
-                    </div>
-                    <p class="skill-description">Frontend fundamentals for building responsive interfaces and
-                        integrating APIs.</p>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>

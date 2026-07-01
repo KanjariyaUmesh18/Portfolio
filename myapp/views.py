@@ -1,24 +1,19 @@
 from django.shortcuts import render
+from .models import * 
 
 # Create your views here.
 
 def home(request):
-    return render(request,"myapp/index.html")
 
-def about(request):
-    return render(request,"myapp/index.html")
+    data = Home.objects.first()
+    skills = Skills.objects.all()
 
-def skills(request):
-    return render(request,"myapp/index.html")
+    for skill in skills:
+        print(skill.icon)
+        print(skill.icon.url)
+    context = {
+        "data" : data,
+        "skills" : skills
+    }
+    return render(request,"myapp/index.html",context)
 
-def projects(request):
-    return render(request,"myapp/index.html")
-
-def experience(request):
-    return render(request,"myapp/index.html")
-
-def services(request):
-    return render(request,"myapp/index.html")
-
-def contact(request):
-    return render(request,"myapp/index.html")
