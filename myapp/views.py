@@ -8,12 +8,12 @@ def home(request):
     data = Home.objects.first()
     skills = Skills.objects.all()
 
-    for skill in skills:
-        print(skill.icon)
-        print(skill.icon.url)
+    projects = Projects.objects.prefetch_related('tool').all
+
     context = {
         "data" : data,
-        "skills" : skills
+        "skills" : skills,
+        "projects" : projects
     }
     return render(request,"myapp/index.html",context)
 
