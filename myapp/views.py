@@ -21,6 +21,10 @@ def home(request):
 
     ser = Services.objects.all()
 
+    dis_skill = Home.objects.prefetch_related('display_skill').all()
+
+    print(dis_skill)
+
     
 
     context = {
@@ -31,6 +35,7 @@ def home(request):
         "about" : about,
         "about_info" : about_info,
         "ser" : ser,
+        "dis_skill" : dis_skill
     }
     return render(request,"myapp/index.html",context)
 
@@ -84,7 +89,7 @@ Message : {message},
 
     ser = Services.objects.all()
 
-    
+    dis_skill = Home.objects.prefetch_related('display_skill').all()
 
     context = {
         "data" : data,
@@ -94,6 +99,7 @@ Message : {message},
         "about" : about,
         "about_info" : about_info,
         "ser" : ser,
+        "dis_skill" : dis_skill
     }
     return render(request,"myapp/index.html",context)
 

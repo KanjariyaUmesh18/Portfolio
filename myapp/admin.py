@@ -3,6 +3,7 @@ from .models import *
 
 # Register your models here.
 
+admin.site.register(DisplaySkills)
 admin.site.register(Home)
 admin.site.register(Skills)
 admin.site.register(Tool)

@@ -2,10 +2,16 @@ from django.db import models
 
 # Create your models here.
 
+
+
+class DisplaySkills(models.Model):
+    skill_name = models.CharField(max_length=30)
+
 class Home(models.Model):
     firstname = models.CharField(max_length=20)
     lastname = models.TextField(max_length=20)
     description = models.TextField()
+    display_skill = models.ManyToManyField(DisplaySkills,related_name="display_skills")
 
     def __str__(self):
         return self.firstname + self.lastname
@@ -54,7 +60,7 @@ class Projects(models.Model):
 
 class Eduacation(models.Model):
     year = models.CharField(max_length=30)
-    course = models.CharField(max_length=40)
+    course = models.CharField(max_length=100)
     institute = models.CharField(max_length=30)
     edu_description = models.TextField()
 
@@ -63,7 +69,7 @@ class Eduacation(models.Model):
 
 class Services(models.Model):
     s_icon = models.ImageField(upload_to="services/icon")
-    ser_name = models.CharField(max_length=20)
+    ser_name = models.CharField(max_length=50)
     ser_desc = models.TextField()
     li1 = models.CharField(max_length=30)
     li2 = models.CharField(max_length=30,blank=True,null=True)
