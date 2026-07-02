@@ -5,3 +5,5 @@ from .models import *
 
 admin.site.register(Home)
 admin.site.register(Skills)
+admin.site.register(Tool)
+admin.site.register(Projects)
