@@ -320,70 +320,19 @@
             </div>
 
             <div class="timeline">
+                {% for e in edu %}
                 <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">2024 — Present</span>
-                        <h3 class="timeline-title">Backend Developer</h3>
-                        <p class="timeline-org">Freelance & Contract Projects</p>
+                        <span class="timeline-date">{{e.year}}</span>
+                        <h3 class="timeline-title">{{e.course}}</h3>
+                        <p class="timeline-org">{{e.institute}}</p>
                         <p class="timeline-description">
-                            Building Django-based web applications and REST APIs for startups and small businesses,
-                            handling everything from database design to deployment.
+                            {{e.edu_description}}
                         </p>
                     </div>
                 </div>
-
-                <div class="timeline-item reveal reveal-delay-1">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2023</span>
-                        <h3 class="timeline-title">Backend Engineering Intern</h3>
-                        <p class="timeline-org">TechStart Solutions</p>
-                        <p class="timeline-description">
-                            Developed API endpoints, optimized database queries, and collaborated with frontend
-                            engineers to deliver production-ready features for a SaaS product.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item reveal reveal-delay-2">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2023</span>
-                        <h3 class="timeline-title">Hackathon Finalist</h3>
-                        <p class="timeline-org">CodeAfrica Buildathon</p>
-                        <p class="timeline-description">
-                            Built a real-time logistics tracking API in 48 hours, earning a top-5 finish among
-                            120+ participating teams.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item reveal reveal-delay-3">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2022</span>
-                        <h3 class="timeline-title">Certified Python Developer</h3>
-                        <p class="timeline-org">Python Institute (PCAP)</p>
-                        <p class="timeline-description">
-                            Earned the PCAP certification, validating strong foundations in Python programming,
-                            OOP, and best practices.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item reveal reveal-delay-4">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2020 — 2024</span>
-                        <h3 class="timeline-title">B.Sc. Computer Science</h3>
-                        <p class="timeline-org">University of Technology</p>
-                        <p class="timeline-description">
-                            Graduated with honors, specializing in software engineering, database systems, and
-                            web application development.
-                        </p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -501,7 +450,7 @@
                     </p>
 
                     <div class="contact-methods">
-                        <a href="mailto:alex.morgan@example.com" class="contact-method">
+                        <a href="mailto:kanjariyaumesh18@gmail.com" class="contact-method">
                             <div class="contact-method-icon">
                                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                     stroke-width="2">
@@ -511,11 +460,11 @@
                             </div>
                             <div class="contact-method-content">
                                 <span class="contact-method-label">Email</span>
-                                <span class="contact-method-value">alex.morgan@example.com</span>
+                                <span class="contact-method-value">kanjariyaumesh18@gmail.com</span>
                             </div>
                         </a>
 
-                        <a href="tel:+1234567890" class="contact-method">
+                        <a href="tel:8849766401" class="contact-method">
                             <div class="contact-method-icon">
                                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                     stroke-width="2">
@@ -525,11 +474,11 @@
                             </div>
                             <div class="contact-method-content">
                                 <span class="contact-method-label">Phone</span>
-                                <span class="contact-method-value">+1 (234) 567-890</span>
+                                <span class="contact-method-value">8849766401</span>
                             </div>
                         </a>
 
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-method">
+                        <a href="https://github.com/KanjariyaUmesh18" target="_blank" rel="noopener noreferrer" class="contact-method">
                             <div class="contact-method-icon">
                                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -538,11 +487,11 @@
                             </div>
                             <div class="contact-method-content">
                                 <span class="contact-method-label">GitHub</span>
-                                <span class="contact-method-value">github.com/alexmorgan</span>
+                                <span class="contact-method-value">https://github.com/KanjariyaUmesh18</span>
                             </div>
                         </a>
 
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-method">
+                        <a href="https://www.linkedin.com/in/kanjariyaumesh/" target="_blank" rel="noopener noreferrer" class="contact-method">
                             <div class="contact-method-icon">
                                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -551,7 +500,7 @@
                             </div>
                             <div class="contact-method-content">
                                 <span class="contact-method-label">LinkedIn</span>
-                                <span class="contact-method-value">linkedin.com/in/alexmorgan</span>
+                                <span class="contact-method-value">https://www.linkedin.com/in/kanjariyaumesh/</span>
                             </div>
                         </a>
                     </div>

@@ -10,10 +10,13 @@ def home(request):
 
     projects = Projects.objects.prefetch_related('tool').all
 
+    edu = Eduacation.objects.all()
+
     context = {
         "data" : data,
         "skills" : skills,
-        "projects" : projects
+        "projects" : projects,
+        "edu" : edu
     }
     return render(request,"myapp/index.html",context)
 

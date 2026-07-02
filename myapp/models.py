@@ -37,4 +37,13 @@ class Projects(models.Model):
     def __str__(self):
         return self.project_name
 
+class Eduacation(models.Model):
+    year = models.CharField(max_length=30)
+    course = models.CharField(max_length=40)
+    institute = models.CharField(max_length=30)
+    edu_description = models.TextField()
+
+    def __str__(self):
+        return self.course
+
 
