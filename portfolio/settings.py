@@ -119,3 +119,10 @@ STATIC_URL = 'static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kanjariyaumesh18@gmail.com'
+EMAIL_HOST_PASSWORD = 'guox btcs dblj sglj'
+EMAIL_PORT = 587
