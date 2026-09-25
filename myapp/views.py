@@ -7,35 +7,29 @@ from django.core.mail import EmailMessage
 
 def home(request):
 
-    print("home view hit ")
+    display_skills = DisplaySkills.objects.all()
+
+    print("DISPLAY SKILLS:", list(display_skills))
+
+    for skill in display_skills:
+        print("SKILL NAME:", skill.skill_name)
 
     data = Home.objects.first()
     skills = Skills.objects.all()
-
     projects = Projects.objects.prefetch_related('tool').all()
-
     edu = Eduacation.objects.all()
-
     about_info = About.objects.all()
     about = AboutCard.objects.all()
-
     ser = Services.objects.all()
-
-    dis_skill = Home.objects.prefetch_related('display_skill').all()
-
-    print(dis_skill)
-
-    
-
     context = {
-        "data" : data,
-        "skills" : skills,
-        "projects" : projects,
-        "edu" : edu,
-        "about" : about,
-        "about_info" : about_info,
-        "ser" : ser,
-        "dis_skill" : dis_skill
+        "data": data,
+        "skills": skills,
+        "projects": projects,
+        "edu": edu,
+        "about": about,
+        "about_info": about_info,
+        "ser": ser,
+        "display_skills" : display_skills
     }
     return render(request,"myapp/index.html",context)
 

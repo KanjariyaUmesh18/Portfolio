@@ -482,45 +482,66 @@
         // ========================
         // TYPING EFFECT
         // ========================
-        const roles = 
-        [
-            {% for skill in data.display_skill.all %}
-                "{{ skill.skill_name }}",
+
+
+        const roles = [
+            {% for skill in display_skills %}
+                "{{ skill.skill_name|escapejs }}",
             {% endfor %}
         ];
 
+        console.log("Roles from database:", roles);
+
         const typingElement = document.getElementById('typingText');
+
         let roleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
         let typingDelay = 100;
 
         function typeEffect() {
+
+            if (roles.length === 0) {
+                typingElement.textContent = "Developer";
+                return;
+            }
+
             const currentRole = roles[roleIndex];
 
             if (isDeleting) {
-                typingElement.textContent = currentRole.substring(0, charIndex - 1);
+
+                typingElement.textContent =
+                    currentRole.substring(0, charIndex - 1);
+
                 charIndex--;
                 typingDelay = 50;
+
             } else {
-                typingElement.textContent = currentRole.substring(0, charIndex + 1);
+
+                typingElement.textContent =
+                    currentRole.substring(0, charIndex + 1);
+
                 charIndex++;
                 typingDelay = 100;
             }
 
             if (!isDeleting && charIndex === currentRole.length) {
+
                 isDeleting = true;
-                typingDelay = 2000; // Pause at end
+                typingDelay = 2000;
+
             } else if (isDeleting && charIndex === 0) {
+
                 isDeleting = false;
+
                 roleIndex = (roleIndex + 1) % roles.length;
-                typingDelay = 500; // Pause before typing next
+
+                typingDelay = 500;
             }
 
             setTimeout(typeEffect, typingDelay);
         }
 
-        // Start typing effect when page loads
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(typeEffect, 800);
         });
